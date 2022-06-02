@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AltaEspecialistaComponent } from '../shared/forms/alta-especialista/alta-especialista.component';
 import { InputValidatorComponent } from '../shared/input-validator/input-validator.component';
 import { AltaPacienteComponent } from '../shared/forms/alta-paciente/alta-paciente.component';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { AltaPacienteComponent } from '../shared/forms/alta-paciente/alta-pacien
     CommonModule,
     BienvenidaRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ]
 })
 export class BienvenidaModule { }

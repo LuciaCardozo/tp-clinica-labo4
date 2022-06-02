@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { DatabaseService } from 'src/app/services/database/database.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -20,12 +21,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private database: DatabaseService,
     private router: Router,
-    private toastService: ToastService) { }
+    private toastService: ToastService,
+    private SpinnerService: NgxSpinnerService) { }
 
-  async ngOnInit() {
+  async ngOnInit() { 
+    this.SpinnerService.show(); 
     const res = await this.database.traerTodo('pacientes');
     res?.subscribe((listaref: any) => {
       this.listaDeCorreos = listaref.map((userRef: any) => userRef.payload.doc.data());
+      this.SpinnerService.hide(); 
     });
   }
 
