@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
   listaAdmin: any = [];
   usuario = {
     email: '',
-    password: ''
+    password: '',
+    role: ''
   };
 
   constructor(private database: DatabaseService,
@@ -52,6 +53,7 @@ export class LoginComponent implements OnInit {
       try{
           this.database.onLogin(this.user.email, this.user.password).then(()=>{
           this.database.emailUsuarioLogeado = this.user.email;   
+          this.database.role = this.user.role;
           this.router.navigate(['/home']);
           this.toastService.show("Successfully user", {classname:'bg-success', "delay":"2000"});
         });
@@ -65,9 +67,10 @@ export class LoginComponent implements OnInit {
     }
   }
   
-  userAutocomplete(email:string,password:string) {
+  userAutocomplete(email:string,password:string,role:string) {
     this.user.email = email;
-    this.user.password = password
+    this.user.password = password;
+    this.user.role = role;
   }
 
 }

@@ -1,1 +1,9 @@
-<p>home works!</p>
+<div *ngIf="isEspecialista">
+    <app-home-especialista></app-home-especialista>
+</div>
+<div *ngIf="isPaciente">
+    <app-home-paciente></app-home-paciente>
+</div>
+<div *ngIf="isAdmin">
+    <app-home-admin></app-home-admin>
+</div>

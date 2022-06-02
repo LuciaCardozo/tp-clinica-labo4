@@ -9,7 +9,7 @@ import { Patient } from 'src/app/models/patient';
   providedIn: 'root'
 })
 export class DatabaseService {
-
+  public role:string = "";
   public emailUsuarioLogeado: any;
   public isLogged: any = false;
   public especialista:Specialist = new Specialist();
