@@ -1,0 +1,61 @@
+<div class="flexCenterCenter">
+    <div style="background-color: rgba(50, 61, 61, 0.63); width: 70%; border-radius: 10px;">
+        <h1 style="text-align: center; margin: 2rem; color: white; text-decoration: underline;">Alta Especialista</h1>
+        <form [formGroup]="form" (ngSubmit)="altaEspecialista()">
+            <div class="custom-input-file flexCenterCenter">
+                <input type="file" accept=".png,.jpg" id="inputImg" class="input-file" (change)="uploadImage($event)">
+                <label class="labelInputImg flexCenterCenter" [ngStyle]="{'background-image': 'url(' + imageURL + ')'}" for="inputImg">{{msgImage}}</label>
+            </div>
+            <div class="inputContainerAlta">
+                <app-input-validator [nameLabel]="'Nombre'" [condition]="form.get('name')?.hasError('required') && form.get('name')?.touched"
+                [formName]="'name'" [message]="'El nombre es requerido'" 
+                [inputType]="'text'" [form]="form"
+                ></app-input-validator>
+                <app-input-validator [nameLabel]="'Apellido'" [condition]="form.get('lastname')?.hasError('required') && form.get('lastname')?.touched"
+                [formName]="'lastname'" [message]="'El apellido es requerido'" 
+                [inputType]="'text'" [form]="form"></app-input-validator>
+            </div>
+            <div class="inputContainerAlta">
+                <app-input-validator [nameLabel]="'Edad'" [condition]="form.get('age')?.hasError('required') && form.get('age')?.touched"
+                [formName]="'age'" [message]="'La edad es requerida'" 
+                [inputType]="'number'" [form]="form"
+                ></app-input-validator>
+                <app-input-validator [nameLabel]="'DNI'" [condition]="form.get('dni')?.hasError('required') && form.get('dni')?.touched"
+                [formName]="'dni'" [message]="'El dni es requerido'" 
+                [inputType]="'number'" [form]="form"></app-input-validator>
+            </div>
+            <div class="inputContainerAlta">
+                <app-input-validator [nameLabel]="'Email'" [condition]="form.get('mail')?.hasError('required') && form.get('mail')?.touched"
+                [formName]="'mail'" [message]="'El email es requerido'" 
+                [inputType]="'email'" [form]="form"
+                ></app-input-validator>
+                <app-input-validator [nameLabel]="'Password'" [condition]="form.get('password')?.hasError('required') && form.get('password')?.touched"
+                [formName]="'password'" [message]="'El password es requerido'" 
+                [inputType]="'password'" [form]="form"></app-input-validator>
+            </div>
+            <div class="flexCenterCenter mt-5">
+                <select name="especialidades" id="" style="font-size: 20px; border: none; border-radius: 5px;" (change)="seSeleccionoEspecialidad($event)">
+                    <option value="Seleccione la especialidad" selected disabled>Seleccione la especialidad</option>
+                    <option value="Dermatologia">Dermatologia</option>
+                    <option value="Odontologia">Odontologia</option>
+                    <option value="Pediatria">Pediatria</option>
+                    <option value="Traumatologia">Traumatologia</option>
+                    <option value="Ginecologia">Ginecologia</option>
+                    <option value="Urologia">Urologia</option>
+                    <option value="Cardiologia">Cardiologia</option>
+                    <option value="Medicina General">Medicina General</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+            <div class="flexCenterCenter" *ngIf="otraEspecialidad">
+                <app-input-validator [nameLabel]="'Indique la especialidad'" [condition]="form.get('especialidad')?.hasError('required') && form.get('especialidad')?.touched"
+                [formName]="'especialidad'" [message]="'La especialidad es requerida'" 
+                [inputType]="'text'" [form]="form"></app-input-validator>
+            </div>
+            <div class="flexCenterCenter">
+                <button class="btn btn-outline-info m-3" [routerLink]="['/bienvenida/login']">🡠Login</button>
+                <button class="btn btn-success m-3">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

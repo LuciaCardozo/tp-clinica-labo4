@@ -1,0 +1,62 @@
+<div class="flexCenterCenter">
+    <div style="background-color: rgba(50, 61, 61, 0.63); width: 70%; border-radius: 10px;">
+        <h1 style="text-align: center; margin: 2rem; color: white; text-decoration: underline;">Alta Paciente</h1>
+        <form [formGroup]="form" (ngSubmit)="altaPaciente()">
+            <div class="custom-input-file flexCenterCenter">
+                <input type="file" accept=".png,.jpg" id="inputImg" class="input-file" (change)="uploadImage($event)">
+                <label class="labelInputImg flexCenterCenter" [ngStyle]="{'background-image': 'url(' + imageURL + ')'}" for="inputImg">{{msgImage}}</label>
+                <input type="file" accept=".png,.jpg" id="inputImgDos" class="input-file" (change)="uploadImageDos($event)">
+                <label class="labelInputImg flexCenterCenter" [ngStyle]="{'background-image': 'url(' + imageURLDos + ')'}" for="inputImgDos">{{msgImageDos}}</label>
+            </div>
+            <div class="inputContainerAlta">
+                <app-input-validator [nameLabel]="'Nombre'" [condition]="form.get('name')?.hasError('required') && form.get('name')?.touched"
+                [formName]="'name'" [message]="'El nombre es requerido'" 
+                [inputType]="'text'" [form]="form"
+                ></app-input-validator>
+                <app-input-validator [nameLabel]="'Apellido'" [condition]="form.get('lastname')?.hasError('required') && form.get('lastname')?.touched"
+                [formName]="'lastname'" [message]="'El apellido es requerido'" 
+                [inputType]="'text'" [form]="form"></app-input-validator>
+            </div>
+            <div class="inputContainerAlta">
+                <app-input-validator [nameLabel]="'Edad'" [condition]="form.get('age')?.hasError('required') && form.get('age')?.touched"
+                [formName]="'age'" [message]="'La edad es requerida'" 
+                [inputType]="'number'" [form]="form"
+                ></app-input-validator>
+                <app-input-validator [nameLabel]="'DNI'" [condition]="form.get('dni')?.hasError('required') && form.get('dni')?.touched"
+                [formName]="'dni'" [message]="'El dni es requerido'" 
+                [inputType]="'number'" [form]="form"></app-input-validator>
+            </div>
+            <div class="inputContainerAlta">
+                <app-input-validator [nameLabel]="'Email'" [condition]="form.get('mail')?.hasError('required') && form.get('mail')?.touched"
+                [formName]="'mail'" [message]="'El email es requerido'" 
+                [inputType]="'email'" [form]="form"
+                ></app-input-validator>
+                <app-input-validator [nameLabel]="'Password'" [condition]="form.get('password')?.hasError('required') && form.get('password')?.touched"
+                [formName]="'password'" [message]="'El password es requerido'" 
+                [inputType]="'password'" [form]="form"></app-input-validator>
+            </div>
+            <div class="flexCenterCenter mt-5">
+                <select name="obraSocial" id="" style="font-size: 20px; border: none; border-radius: 5px;" (change)="seSeleccionoObraSocial($event)">
+                    <option value="Seleccione la obra socical" selected disabled>Seleccione la obra social</option>
+                    <option value="Osde">Osde</option>
+                    <option value="Ioma">Ioma</option>
+                    <option value="Medifé">Medifé</option>
+                    <option value="Swiss Medical">Swiss Medical</option>
+                    <option value="Galeno">Galeno</option>
+                    <option value="Medicus">Medicus</option>
+                    <option value="SanCor Salud">SanCor Salud</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+            <div class="flexCenterCenter" *ngIf="otraObraSocial">
+                <app-input-validator [nameLabel]="'Indique la obra social'" [condition]="form.get('obraSocial')?.hasError('required') && form.get('obraSocial')?.touched"
+                [formName]="'obraSocial'" [message]="'La obra social es requerida'" 
+                [inputType]="'text'" [form]="form"></app-input-validator>
+            </div>
+            <div class="flexCenterCenter">
+                <button class="btn btn-outline-info m-3" [routerLink]="['/bienvenida/login']">🡠Login</button>
+                <button class="btn btn-success m-3">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

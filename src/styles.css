@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+.contenedor{
+    width: 100vw;
+    min-height: 100vh;
+    max-width: 100%;
+    background-image: url("https://img.freepik.com/foto-gratis/desenfoque-fondo-camino-hospital-blanco-corto_7180-2422.jpg?w=2000");
+}
+.flexCenterCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexDirectionColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.gridCenterCenter{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,27 @@
+.inputContainerAlta{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.input-file {
+    display: none;
+}
+
+.labelInputImg {
+    height: 150px;
+    width: 150px;
+    text-shadow: -2px -2px 4px #78d878; 
+    color: black; 
+    cursor: pointer;
+    border-style: dotted;
+    border-color: rgb(127, 145, 108);
+    border-radius: 75px;
+    background-color: rgba(222, 226, 185, 0.63);
+    background-position: center;
+    background-size:cover;
+}
+
+.custom-input-file {
+    margin: 5px;
+}

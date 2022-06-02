@@ -1,0 +1,16 @@
+<div class="flexCenterCenter w-100">
+    <div style="background-color:rgba(192, 191, 141, 0.644); width: 100vw; height: 100%; min-height: 100vh;">
+        <div class="flexCenterCenter" style="padding: 1rem;">
+            <select name="Roles" id="" (change)="seSeleccionRole($event)" style="border-radius: 1rem; padding: 0.5rem;">
+                <option value="Paciente">Paciente</option>
+                <option value="Especialista">Especialista</option>
+            </select>
+        </div>
+        <div *ngIf = "isEspecialista">
+            <app-alta-especialista></app-alta-especialista>
+        </div>
+        <div *ngIf = "!isEspecialista">
+            <app-alta-paciente></app-alta-paciente>
+        </div>
+    </div>
+</div>
