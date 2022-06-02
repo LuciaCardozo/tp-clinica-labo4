@@ -11,6 +11,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { HomeEspecialistaComponent } from './shared/homes/home-especialista/home-especialista.component';
 import { HomePacienteComponent } from './shared/homes/home-paciente/home-paciente.component';
 import { HomeAdminComponent } from './shared/homes/home-admin/home-admin.component';
+import { ErrorComponent } from './shared/error/error.component';
 const firebaseConfig = {
   apiKey: "AIzaSyArRE_ER1KWu4DizpiWm43TOxl-lY7m1rM",
   authDomain: "db-generico.firebaseapp.com",
@@ -22,7 +23,8 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    ToastComponent,    
+    ToastComponent,
+    ErrorComponent,    
   ],
   imports: [
     BrowserModule,
