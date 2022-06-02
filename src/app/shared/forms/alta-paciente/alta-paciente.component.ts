@@ -23,9 +23,9 @@ export class AltaPacienteComponent implements OnInit {
     this.form = this.fb.group({
       name: ["",Validators.required],
       lastname: ["", Validators.required],
-      age: ["", Validators.required],
-      dni: ["", Validators.required],
-      mail: ["", Validators.required],
+      age: ["", Validators.required,Validators.min(0),Validators.max(99)],
+      dni: ["", Validators.required,Validators.maxLength(8)],
+      mail: ["", Validators.required, Validators.email],
       password: ["", Validators.required],
       obraSocial: ["", Validators.required],
       avatar: [""],
@@ -54,11 +54,11 @@ export class AltaPacienteComponent implements OnInit {
       this.dataBase.paciente.imgOne = this.form.controls["avatar"].value;
       this.dataBase.paciente.imgtwo = this.form.controls["avatarDos"].value;
       //console.log( this.dataBase.paciente);
-      this.darDeAlta(this.dataBase.paciente);
+      this.darDeAlta();
     }
   }
 
-  darDeAlta(paciente:any) {
+  darDeAlta() {
     const auxpaciente=this.form.value;
     let existe = this.dataBase.listaPaciente.find((email: any) => email.mail == this.form.controls["mail"].value);
       if (!existe && this.form.status != "INVALID") {

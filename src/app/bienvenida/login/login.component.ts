@@ -13,7 +13,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class LoginComponent implements OnInit {
 
   user:User = new User();
-  listaDeCorreos: any = [];
+  listaAdmin: any = [];
   usuario = {
     email: '',
     password: ''
@@ -26,17 +26,29 @@ export class LoginComponent implements OnInit {
 
   async ngOnInit() { 
     this.SpinnerService.show(); 
-    const res = await this.database.traerTodo('pacientes');
-    res?.subscribe((listaref: any) => {
-      this.listaDeCorreos = listaref.map((userRef: any) => userRef.payload.doc.data());
+    const resPaciente = await this.database.traerTodo('pacientes');
+    const resEspecialista = await this.database.traerTodo('especialistas');
+    const resAdmin = await this.database.traerTodo('userAdmin');
+    resPaciente?.subscribe((listaref: any) => {
+      this.database.listaPaciente = listaref.map((userRef: any) => userRef.payload.doc.data());
+      this.SpinnerService.hide(); 
+    });
+    resEspecialista?.subscribe((listaref: any) => {
+      this.database.listaEspecialista = listaref.map((userRef: any) => userRef.payload.doc.data());
+      this.SpinnerService.hide(); 
+    });
+    resAdmin?.subscribe((listaref: any) => {
+      this.listaAdmin = listaref.map((userRef: any) => userRef.payload.doc.data());
       this.SpinnerService.hide(); 
     });
   }
 
 
   loginWithValidation() {
-    let existe=this.listaDeCorreos.find((email: any) => email.mail == this.user.email && email.password == this.user.password);
-    if (existe) {
+    let existePaciente=this.database.listaPaciente.find((email: any) => email.mail == this.user.email && email.password == this.user.password);
+    let existeEspecialista=this.database.listaEspecialista.find((email: any) => email.mail == this.user.email && email.password == this.user.password);
+    let existeAdmin= this.listaAdmin.find((email: any) => email.mail == this.user.email && email.password == this.user.password);
+    if (existePaciente || existeEspecialista || existeAdmin) {
       try{
           this.database.onLogin(this.user.email, this.user.password).then(()=>{
           this.database.emailUsuarioLogeado = this.user.email;   
